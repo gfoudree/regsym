@@ -68,6 +68,7 @@ class Instruction():
 class Function():
     name = ""
     machine = None
+    basicBlocks = []
     
     def __init__(self, funcName):
         self.name = funcName
@@ -78,7 +79,7 @@ class Function():
             for op in block['ops']: #For each instruction
                 instr = Instruction(op['disasm'], op['bytes'], op['offset'])
                 instrs.append(instr)
-                print(str(instr))
+                #print(str(instr))
                 #print("{}: {}".format(op['offset'], op['disasm']))
             bb = BasicBlock(instrs, block['size'], block['offset'])
             ##bb.pp()
@@ -91,14 +92,32 @@ class Function():
                 bb.jumpTargets.append(block['jump'])
             if 'fail' in block.keys():
                 bb.jumpTargets.append(block['fail'])
-                
-        
+            self.basicBlocks.append(bb)
+
+    def getBasicBlockFromAddr(self, addr):
+        for bb in self.basicBlocks:
+            if bb.startAddr == addr:
+                return bb
+        return None
+    
+    def generateInstructionSlice(self, basicBlockAddrs):
+        instructions = []
+        for addr in basicBlockAddrs:
+            bb = self.getBasicBlockFromAddr(addr)
+            if bb == None:
+                raise Exception("Address {} does not correspond to a basic block in function {}".format(addr, self.name))
+            
+            for inst in bb.instructions:
+                instructions.append(inst)
+        return instructions
+            
 r2 = r2pipe.open("a.out")
 r2.cmd("aaa")
 
 functions = r2.cmdj("aflj")
 
+parsedFunctions = []
 for _func in functions:
     name = _func['name']
     func = Function(_func['name'])
-    
+    parsedFunctions.append(func)
