@@ -1,4 +1,6 @@
-#include <stdio.h>
+int _baz(int c) {
+	return c + 22;
+}
 int main() {
-	printf("Hello");
+	return _baz(4);
 }
