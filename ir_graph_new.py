@@ -66,6 +66,7 @@ def ir_build_graph(irsb):
             register_name = arch.register_names[stmt.offset].upper()
             print(register_name + " = \n" + str(stmt.data))
             
+            """ Find two nodes and link them - This is an issue b/c we are unsure of the dependency ordering...
             reg_node_id = 0
             tmpvar_node_id = 0
             if register_name in labels.values(): #Look up node ID for register otherwise add it
@@ -85,6 +86,22 @@ def ir_build_graph(irsb):
                 node_id += 1
             
             G.add_edge(reg_node_id, tmpvar_node_id)
+            """
+            G.add_node(node_id, label=register_name)
+            labels[node_id] = register_name
+            reg_node_id = node_id
+            node_id += 1
+            
+            if isinstance(stmt.data, pyvex.expr.Const):
+                G.add_node(node_id, label=str(stmt.data))
+                labels[node_id] = str(stmt.data)
+                G.add_edge(reg_node_id, node_id)
+                
+                node_id += 1
+            else:
+                tmpvar_node_id = list(labels.keys())[list(labels.values()).index(str(stmt.data))]
+                G.add_edge(reg_node_id, tmpvar_node_id)
+            
         #print(stmt.data)
         
         print("-"*20 + "\n")
@@ -111,4 +128,4 @@ base_addr = fn_info['offset']
 
 irsb = pyvex.lift(fn_machinecode, base_addr, arch)
 
-ir_build_graph(irsb)
+G = ir_build_graph(irsb)
