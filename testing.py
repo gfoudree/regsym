@@ -10,34 +10,37 @@ import networkx as nx
 
 G2 = nx.DiGraph()
 
+def graphContainsLabel(graph, label):
+    for node in graph.nodes().items():
+        if 'label' in node[1].keys() and node[1]['label'] == label:
+            return True
+    return False
+
 def DFS(G, V, visited=[]):
     visited += [V]
     
-    if V not in G2:
-        G2.add_node(V, label=G.nodes[V]['label'])
-        print("Adding node to final graph: " + G.nodes[V]['label'])
-        
+    global G2
+    
+    nodeLabel = G.nodes[V]['label']
+    if int(nodeLabel) not in G2:
+        G2.add_node(int(nodeLabel), label=nodeLabel)
+        print("Adding " + nodeLabel + " to final graph")
+
     prevnodes = list(G.predecessors(V))
     if len(prevnodes) > 0:
         prevNodeStr = G.nodes[prevnodes[0]]['label']
         print(G.nodes[V]['label'] + " Prev "  + prevNodeStr)
-        G2.add_edge(prevnodes[0], V)
-        print(prevNodeStr + " -> " + G.nodes[V]['label'])
-    else:
-        print(G.nodes[V]['label'])
-    
+        G2.add_edge(int(prevNodeStr), int(nodeLabel))
+        print(prevNodeStr + " -> " + nodeLabel)
         
     if len(list(G.successors(V))) == 0: #Leaf node? Find other graphs with this node as root
         for subgraph in G.nodes().items():
-            if subgraph[1]['label'] == G.nodes[V]['label'] and len(list(G.predecessors(subgraph[0]))) == 0:
-                    print("Found disjoint graph for " + G.nodes[V]['label'])
-                    
-                    if V not in G2:
-                        G2.add_node(subgraph[0], label=subgraph[1]['label'])
-                        print("Adding node to final graph: " + subgraph[1]['label'])
-                    G2.add_edge(V, subgraph[0])
-                    print(G.nodes[V]['label'] + " -> " + subgraph[1]['label'])
+            if subgraph[1]['label'] == nodeLabel and len(list(G.predecessors(subgraph[0]))) == 0:
+                    print("Found disjoint graph for " + nodeLabel)
+                    #G2.add_edge(int(nodeLabel), int(subgraph[1]['label']))
+                    print(nodeLabel + " -> " + subgraph[1]['label'])
                     DFS(G, subgraph[0])
+                    
     for N in G.successors(V):
         if N not in visited:
             DFS(G, N, visited)
