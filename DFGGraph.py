@@ -31,6 +31,12 @@ class DFGGraph():
                 return n[0]
         return None
     
+    def generateDependencyGraph(self, register):
+        registerNodeId = self.getNodeFromLabel(register + "_w") # Want the written value
+        regNode = self.G.node(registerNodeId)
+        assert len(self.G.predecessors(registerNodeId)) == 0, "Register should be the root node in the dependency graph!"
+        #need to do a DFS or BFS on each node, building a new graph
+        
     def generateGraphFromIR(self, irsb):
         assert isinstance(irsb, pyvex.block.IRSB), "Expected VEX IR parameter!"
         
@@ -47,7 +53,7 @@ class DFGGraph():
             if isinstance(stmt, pyvex.stmt.WrTmp): # temp variable assignment (ex: t0 = 5)
                 tmp_node = self.addNode("t" + str(stmt.tmp))
                 if isinstance(stmt.data, pyvex.stmt.Get): # Is the data coming from a register?
-                    register_name = self.arch.register_names[stmt.data.offset].upper()
+                    register_name = self.arch.register_names[stmt.data.offset].upper() + "_r" # _r = read
                     print("t" + str(stmt.tmp) + " = \n" + register_name)
                     reg_node = self.addNode(register_name)
                     self.G.add_edge(tmp_node, reg_node)
@@ -67,7 +73,7 @@ class DFGGraph():
                 print("Store *{0} = {1}".format(stmt.addr, stmt.data))
                 
             elif isinstance(stmt, pyvex.stmt.Put): # Put register
-                register_name = self.arch.register_names[stmt.offset].upper()
+                register_name = self.arch.register_names[stmt.offset].upper() + "_w" # _w = write
                 print(register_name + " = \n" + str(stmt.data))
                 regNode = self.addNode(register_name)
                 
