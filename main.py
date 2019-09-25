@@ -14,3 +14,6 @@ if __name__ == '__main__':
     G = DFGGraph(b.arch)
     G.generateGraphFromIR(irsb)
     print(G.getGraphViz())
+    
+    print("*"*30)
+    print(G.generateDependencyGraph('RAX'))

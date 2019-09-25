@@ -10,6 +10,7 @@ import pyvex
 
 class DFGGraph():
     G = None
+    dependencyGraph = None
     arch = None
     nodeId = 0
     
@@ -31,12 +32,43 @@ class DFGGraph():
                 return n[0]
         return None
     
+    def DFS(self, G, V, visited=[]):
+        visited += [V]
+        
+        nodeLabel = G.nodes[V]['label']
+        if int(nodeLabel) not in self.dependencyGraph:
+            self.dependencyGraph.add_node(int(nodeLabel), label=nodeLabel)
+            print("Adding " + nodeLabel + " to final graph")
+    
+        prevnodes = list(G.predecessors(V))
+        if len(prevnodes) > 0:
+            prevNodeStr = G.nodes[prevnodes[0]]['label']
+            print(G.nodes[V]['label'] + " Prev "  + prevNodeStr)
+            self.dependencyGraph.add_edge(int(prevNodeStr), int(nodeLabel))
+            print(prevNodeStr + " -> " + nodeLabel)
+            
+        if len(list(G.successors(V))) == 0: #Leaf node? Find other graphs with this node as root
+            for subgraph in G.nodes().items():
+                if subgraph[1]['label'] == nodeLabel and len(list(G.predecessors(subgraph[0]))) == 0:
+                        print("Found disjoint graph for " + nodeLabel)
+                        #G2.add_edge(int(nodeLabel), int(subgraph[1]['label']))
+                        print(nodeLabel + " -> " + subgraph[1]['label'])
+                        self.DFS(G, subgraph[0])
+                        
+        for N in G.successors(V):
+            if N not in visited:
+                self.DFS(G, N, visited)
+                
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeFromLabel(register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)
-        assert len(self.G.predecessors(registerNodeId)) == 0, "Register should be the root node in the dependency graph!"
+        #assert len(self.G.predecessors(registerNodeId)) == 0, "Register should be the root node in the dependency graph!"
         #need to do a DFS or BFS on each node, building a new graph
+        self.dependencyGraph = nx.DiGraph()
+        self.DFS(self.G, registerNodeId)
         
+        return str(nx.nx_agraph.to_agraph(self.dependencyGraph))
+    
     def generateGraphFromIR(self, irsb):
         assert isinstance(irsb, pyvex.block.IRSB), "Expected VEX IR parameter!"
         
