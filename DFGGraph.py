@@ -13,6 +13,7 @@ class DFGGraph():
     dependencyGraph = None
     arch = None
     nodeId = 0
+    dependencyGraphNodeId = 0
     
     def __init__(self, arch):
         self.G = nx.DiGraph()
@@ -26,32 +27,33 @@ class DFGGraph():
     def getGraphViz(self):
         return nx.nx_agraph.to_agraph(self.G)
     
-    def getNodeFromLabel(self, label):
-        for n in self.G.nodes().items():
-            if n[1]['label'] == label:
-                return n[0]
+    def getNodeIdFromLabel(self, graph, label):
+        for node in graph.nodes().items():
+            if 'label' in node[1].keys() and node[1]['label'] == label:
+                return node[0]
         return None
     
     def DFS(self, G, V, visited=[]):
         visited += [V]
         
         nodeLabel = G.nodes[V]['label']
-        if int(nodeLabel) not in self.dependencyGraph:
-            self.dependencyGraph.add_node(int(nodeLabel), label=nodeLabel)
+        if self.getNodeIdFromLabel(self.dependencyGraph, nodeLabel) == None:
+            self.dependencyGraph.add_node(self.dependencyGraphNodeId, label=nodeLabel)
+            self.dependencyGraphNodeId += 1
             print("Adding " + nodeLabel + " to final graph")
     
         prevnodes = list(G.predecessors(V))
         if len(prevnodes) > 0:
             prevNodeStr = G.nodes[prevnodes[0]]['label']
             print(G.nodes[V]['label'] + " Prev "  + prevNodeStr)
-            self.dependencyGraph.add_edge(int(prevNodeStr), int(nodeLabel))
+            self.dependencyGraph.add_edge(self.getNodeIdFromLabel(self.dependencyGraph, prevNodeStr), 
+                                          self.getNodeIdFromLabel(self.dependencyGraph, nodeLabel))
             print(prevNodeStr + " -> " + nodeLabel)
             
         if len(list(G.successors(V))) == 0: #Leaf node? Find other graphs with this node as root
             for subgraph in G.nodes().items():
                 if subgraph[1]['label'] == nodeLabel and len(list(G.predecessors(subgraph[0]))) == 0:
                         print("Found disjoint graph for " + nodeLabel)
-                        #G2.add_edge(int(nodeLabel), int(subgraph[1]['label']))
                         print(nodeLabel + " -> " + subgraph[1]['label'])
                         self.DFS(G, subgraph[0])
                         
@@ -60,7 +62,7 @@ class DFGGraph():
                 self.DFS(G, N, visited)
                 
     def generateDependencyGraph(self, register):
-        registerNodeId = self.getNodeFromLabel(register + "_w") # Want the written value
+        registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)
         #assert len(self.G.predecessors(registerNodeId)) == 0, "Register should be the root node in the dependency graph!"
         #need to do a DFS or BFS on each node, building a new graph
@@ -113,5 +115,5 @@ class DFGGraph():
                     constNode = self.addNode(str(stmt.data))
                     self.G.add_edge(regNode, constNode)
                 else:
-                    tmp_node = self.getNodeFromLabel(str(stmt.data))
+                    tmp_node = self.getNodeIdFromLabel(self.G, str(stmt.data))
                     self.G.add_edge(regNode, tmp_node)
