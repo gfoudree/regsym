@@ -35,41 +35,53 @@ class DFGGraph():
     
     def DFS(self, G, V, visited=[]):
         visited += [V]
-        
         nodeLabel = G.nodes[V]['label']
-        if self.getNodeIdFromLabel(self.dependencyGraph, nodeLabel) == None:
-            self.dependencyGraph.add_node(self.dependencyGraphNodeId, label=nodeLabel)
-            self.dependencyGraphNodeId += 1
-            print("Adding " + nodeLabel + " to final graph")
-    
-        prevnodes = list(G.predecessors(V))
-        if len(prevnodes) > 0:
-            prevNodeStr = G.nodes[prevnodes[0]]['label']
-            print(G.nodes[V]['label'] + " Prev "  + prevNodeStr)
-            self.dependencyGraph.add_edge(self.getNodeIdFromLabel(self.dependencyGraph, prevNodeStr), 
-                                          self.getNodeIdFromLabel(self.dependencyGraph, nodeLabel))
-            print(prevNodeStr + " -> " + nodeLabel)
-            
+        
         if len(list(G.successors(V))) == 0: #Leaf node? Find other graphs with this node as root
             for subgraph in G.nodes().items():
                 if subgraph[1]['label'] == nodeLabel and len(list(G.predecessors(subgraph[0]))) == 0:
-                        print("Found disjoint graph for " + nodeLabel)
-                        print(nodeLabel + " -> " + subgraph[1]['label'])
+                        G.add_edge(V, subgraph[0])
                         self.DFS(G, subgraph[0])
-                        
         for N in G.successors(V):
             if N not in visited:
                 self.DFS(G, N, visited)
+        return visited
+    
+    def mergeNodes(self, G):
+        remove_edges = []
+        remove_nodes = []
+        add_edges = []
+        for E in G.edges:
+            n1Label = G.nodes[E[0]]['label']
+            n2Label = G.nodes[E[1]]['label']
+            
+            if n1Label == n2Label and 't' in n1Label and 't' in n2Label:
+                print("Removing edge {0} -> {1}".format(n1Label, n2Label))
+                remove_edges.append((E[0], E[1]))
+                remove_nodes.append(E[0])
                 
+                parent = list(G.predecessors(E[0]))[0]
+                add_edges.append((parent, E[1]))
+        G.remove_edges_from(remove_edges)
+        G.remove_nodes_from(remove_nodes)
+        G.add_edges_from(add_edges)
+        
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)
-        #assert len(self.G.predecessors(registerNodeId)) == 0, "Register should be the root node in the dependency graph!"
+        assert len(list(self.G.predecessors(registerNodeId))) == 0, "Register should be the root node in the dependency graph!"
         #need to do a DFS or BFS on each node, building a new graph
-        self.dependencyGraph = nx.DiGraph()
-        self.DFS(self.G, registerNodeId)
         
-        return str(nx.nx_agraph.to_agraph(self.dependencyGraph))
+        connectedNodes = self.DFS(self.G, registerNodeId)
+        removeNodes = []
+        for node in list(self.G.nodes):
+            if node not in connectedNodes:
+                removeNodes.append(node)
+        self.G.remove_nodes_from(removeNodes)
+        
+        self.mergeNodes(self.G)
+        
+        return str(nx.nx_agraph.to_agraph(self.G))
     
     def generateGraphFromIR(self, irsb):
         assert isinstance(irsb, pyvex.block.IRSB), "Expected VEX IR parameter!"
