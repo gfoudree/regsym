@@ -7,6 +7,8 @@ Created on Fri Sep 20 11:01:54 2019
 """
 import networkx as nx
 import pyvex
+import sys
+import re
 
 class DFGGraph():
     G = None
@@ -14,6 +16,7 @@ class DFGGraph():
     arch = None
     nodeId = 0
     dependencyGraphNodeId = 0
+    tmpVarRegex = re.compile(r't\d+')
     
     def __init__(self, arch):
         self.G = nx.DiGraph()
@@ -55,7 +58,7 @@ class DFGGraph():
             n1Label = G.nodes[E[0]]['label']
             n2Label = G.nodes[E[1]]['label']
             
-            if n1Label == n2Label and 't' in n1Label and 't' in n2Label:
+            if n1Label == n2Label and self.tmpVarRegex.match(n1Label) and self.tmpVarRegex.match(n2Label):
                 print("Removing edge {0} -> {1}".format(n1Label, n2Label))
                 remove_edges.append((E[0], E[1]))
                 remove_nodes.append(E[0])
@@ -80,8 +83,49 @@ class DFGGraph():
         self.G.remove_nodes_from(removeNodes)
         
         self.mergeNodes(self.G)
-        
+        #self.DFS_Equation(self.G, list(nx.topological_sort(self.G))[0])
+        self.constPropogateDepGraph(self.G)
         return str(nx.nx_agraph.to_agraph(self.G))
+    
+    def constPropogateDepGraph(self, G):
+        remove_edges = []
+        remove_nodes = []
+        add_edges = []
+        for E in G.edges:
+            n1Label = G.nodes[E[0]]['label']
+            n2Label = G.nodes[E[1]]['label']
+            n1OutDegree = len(list(G.successors(E[0])))
+            n2OutDegree = len(list(G.successors(E[1])))
+            
+            if self.tmpVarRegex.match(n1Label) and not self.tmpVarRegex.match(n2Label) and n1OutDegree == 1 and len(list(G.predecessors(E[0]))) > 0:
+                remove_edges.append((E[0], E[1]))
+                remove_nodes.append(E[0])
+                
+                parent = list(G.predecessors(E[0]))[0]
+                add_edges.append((parent, E[1]))
+            elif self.tmpVarRegex.match(n2Label) and not self.tmpVarRegex.match(n1Label) and n2OutDegree == 1 and len(list(G.successors(E[1]))) > 0:
+                remove_edges.append((E[0], E[1]))
+                remove_nodes.append(E[1])
+                
+                successor = list(G.successors(E[1]))[0]
+                add_edges.append((E[0], successor))            
+            #print("{0} deg={1} -> {2} deg={3}".format(n1Label, n1OutDegree, n2Label, n2OutDegree))
+            
+        G.remove_edges_from(remove_edges)
+        G.remove_nodes_from(remove_nodes)
+        G.add_edges_from(add_edges)
+    
+    depth = 0
+    def DFS_Equation(self, G, V, visited=[]):
+        visited += [V]
+        nodeLabel = G.nodes[V]['label']
+        
+        sys.stdout.write(nodeLabel + "=")
+        for N in G.successors(V):
+            if N not in visited:
+                self.depth += 1
+                self.DFS_Equation(G, N, visited)
+            self.depth -= 1
     
     def generateGraphFromIR(self, irsb):
         assert isinstance(irsb, pyvex.block.IRSB), "Expected VEX IR parameter!"
