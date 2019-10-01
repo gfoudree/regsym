@@ -88,6 +88,7 @@ class DFGGraph():
             return traversalLabels
         
     def mergeRedundantTmpVars(self):
+        redundantGraphs = set()
         for subgraph in self.getSubgraphs():
             labels = self.getPreorderTraversal(subgraph)
                 
@@ -95,9 +96,10 @@ class DFGGraph():
                 sub_labels = self.getPreorderTraversal(sub_subgraph)
                 
                 if labels == sub_labels and sub_subgraph != subgraph:
-                    print("Graph for {0} and {1} are the same!".format(
-                            self.G.nodes[subgraph]['label'], self.G.nodes[sub_subgraph]['label']))
-            #print("{0} : {1}".format(subgraph, traversalLabels))
+                    redundantGraphs.add(tuple(sorted(subgraph, sub_subgraph)))
+        
+        for redundantGraph in redundantGraphs:
+            
             
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
