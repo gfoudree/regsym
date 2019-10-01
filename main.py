@@ -11,9 +11,13 @@ from DFGGraph import *
 if __name__ == '__main__':
     b = X86Binary('./linear')
     irsb = b.getVEXIROfFunction('_baz')
+    irsb.pp()
     G = DFGGraph(b.arch)
-    G.generateGraphFromIR(irsb)
-    print(G.getGraphViz())
     
+    G.generateGraphFromIR(irsb)
+    G.mergeRedundantTmpVars()
+    print(G.getGraphViz())
+    """
     print("*"*30)
     print(G.generateDependencyGraph('RAX'))
+    """

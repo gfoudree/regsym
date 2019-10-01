@@ -69,6 +69,36 @@ class DFGGraph():
         G.remove_nodes_from(remove_nodes)
         G.add_edges_from(add_edges)
         
+    def getSubgraphs(self):
+        subGraphs = []
+        for node in self.G.nodes().items():
+            numPredecessors = len(list(self.G.predecessors(node[0])))
+            if numPredecessors == 0 or (numPredecessors == 1 and self.G.nodes[list(self.G.predecessors(node[0]))[0]]['label'] == node[1]['label']):
+                subGraphs.append(node[0])
+        return subGraphs
+    
+    def getPreorderTraversal(self, node):
+            # Start comparing from the 2nd node downward for equality 
+            nextNode = list(self.G.successors(node))[0]
+            
+            traversal = list(nx.dfs_preorder_nodes(self.G, nextNode))
+            traversalLabels = [] # List of the labels of the nodes in preorder
+            for n in traversal:
+                traversalLabels.append(self.G.nodes[n]['label'])
+            return traversalLabels
+        
+    def mergeRedundantTmpVars(self):
+        for subgraph in self.getSubgraphs():
+            labels = self.getPreorderTraversal(subgraph)
+                
+            for sub_subgraph in self.getSubgraphs():
+                sub_labels = self.getPreorderTraversal(sub_subgraph)
+                
+                if labels == sub_labels and sub_subgraph != subgraph:
+                    print("Graph for {0} and {1} are the same!".format(
+                            self.G.nodes[subgraph]['label'], self.G.nodes[sub_subgraph]['label']))
+            #print("{0} : {1}".format(subgraph, traversalLabels))
+            
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)
@@ -83,8 +113,10 @@ class DFGGraph():
         self.G.remove_nodes_from(removeNodes)
         
         self.mergeNodes(self.G)
-        #self.DFS_Equation(self.G, list(nx.topological_sort(self.G))[0])
         self.constPropogateDepGraph(self.G)
+        
+        #self.DFS_Equation(self.G, list(nx.topological_sort(self.G))[0])
+        print("\n")
         return str(nx.nx_agraph.to_agraph(self.G))
     
     def constPropogateDepGraph(self, G):
@@ -120,7 +152,10 @@ class DFGGraph():
         visited += [V]
         nodeLabel = G.nodes[V]['label']
         
-        sys.stdout.write(nodeLabel + "=")
+        if len(list(G.successors(V))) > 1:
+            sys.stdout.write(nodeLabel + ",")
+        else:
+            sys.stdout.write(nodeLabel + "(")
         for N in G.successors(V):
             if N not in visited:
                 self.depth += 1
@@ -161,6 +196,11 @@ class DFGGraph():
 
             elif isinstance(stmt, pyvex.stmt.Store): # Can be a store to memory addr or temp var dereference
                 print("Store *{0} = {1}".format(stmt.addr, stmt.data))
+                tmp_node = self.getNodeIdFromLabel(self.G, str(stmt.data))
+                pointer_node = self.getNodeIdFromLabel(self.G, str(stmt.addr))
+                #op = self.addNode("STLe")
+                #self.G.add_edge(pointer_node, op)
+                #self.G.add_edge(op, tmp_node)
                 
             elif isinstance(stmt, pyvex.stmt.Put): # Put register
                 register_name = self.arch.register_names[stmt.offset].upper() + "_w" # _w = write
