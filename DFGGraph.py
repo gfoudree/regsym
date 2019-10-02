@@ -86,9 +86,12 @@ class DFGGraph():
             for n in traversal:
                 traversalLabels.append(self.G.nodes[n]['label'])
             return traversalLabels
-        
+    
     def mergeRedundantTmpVars(self):
         redundantGraphs = set()
+        nodesInGraph = []
+        edgesInGraph = []
+        
         for subgraph in self.getSubgraphs():
             labels = self.getPreorderTraversal(subgraph)
                 
@@ -96,11 +99,25 @@ class DFGGraph():
                 sub_labels = self.getPreorderTraversal(sub_subgraph)
                 
                 if labels == sub_labels and sub_subgraph != subgraph:
-                    redundantGraphs.add(tuple(sorted(subgraph, sub_subgraph)))
+                    redundantGraphs.add(tuple(sorted(tuple((subgraph, sub_subgraph)))))
         
         for redundantGraph in redundantGraphs:
+            # Queue deletion of G2 from subgraph pool
+            nodesInGraph.extend(list(nx.dfs_postorder_nodes(self.G, redundantGraph[1])))
+            edgesInGraph.extend(list(nx.dfs_edges(self.G, redundantGraph[1])))
             
+            # Merge references to the root node of G2 with G1
+            g2Name = self.G.nodes[redundantGraph[1]]['label']
+            g1Name = self.G.nodes[redundantGraph[0]]['label']
+            print("{0} == {1}, Replacing all references to {0} with {1}".format(g2Name, g1Name))
             
+            for n in self.G.nodes().items():
+                if n[1]['label'] == g2Name:
+                    n[1]['label'] = g1Name
+                    
+        self.G.remove_nodes_from(nodesInGraph)
+        self.G.remove_edges_from(edgesInGraph)
+        
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)

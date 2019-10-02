@@ -17,7 +17,7 @@ if __name__ == '__main__':
     G.generateGraphFromIR(irsb)
     G.mergeRedundantTmpVars()
     print(G.getGraphViz())
-    """
+    
     print("*"*30)
     print(G.generateDependencyGraph('RAX'))
-    """
+    
