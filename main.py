@@ -15,7 +15,7 @@ if __name__ == '__main__':
     G = DFGGraph(b.arch)
     
     G.generateGraphFromIR(irsb)
-    G.mergeRedundantTmpVars()
+
     print(G.getGraphViz())
     
     print("*"*30)

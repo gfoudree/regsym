@@ -118,11 +118,30 @@ class DFGGraph():
         self.G.remove_nodes_from(nodesInGraph)
         self.G.remove_edges_from(edgesInGraph)
         
+    def patchUpLoadStores(self, G):
+        # This fixes up the bug where store tmp variables depend on a store instruction 
+        # instead of the other way around...
+        # AKA (https://imgur.com/a/BhrJlLc) -> https://imgur.com/a/LNS80jW
+        deleteEdges = []
+        addEdges = []
+        
+        for node in G.nodes().items():
+            if 'STLe' in node[1]['label']: #Store operation node
+                # Change incoming edge to be an outgoing edge to that same node
+                prevNode = list(G.predecessors(node[0]))[0]
+                deleteEdges.append((prevNode, node[0]))
+                addEdges.append((node[0], prevNode))
+                
+        G.remove_edges_from(deleteEdges)
+        G.add_edges_from(addEdges)
+        
     def generateDependencyGraph(self, register):
         registerNodeId = self.getNodeIdFromLabel(self.G, register + "_w") # Want the written value
         regNode = self.G.node(registerNodeId)
         assert len(list(self.G.predecessors(registerNodeId))) == 0, "Register should be the root node in the dependency graph!"
         #need to do a DFS or BFS on each node, building a new graph
+        
+        self.mergeRedundantTmpVars()
         
         connectedNodes = self.DFS(self.G, registerNodeId)
         removeNodes = []
@@ -134,6 +153,7 @@ class DFGGraph():
         self.mergeNodes(self.G)
         self.constPropogateDepGraph(self.G)
         
+        self.patchUpLoadStores(self.G)
         #self.DFS_Equation(self.G, list(nx.topological_sort(self.G))[0])
         print("\n")
         return str(nx.nx_agraph.to_agraph(self.G))
@@ -217,9 +237,9 @@ class DFGGraph():
                 print("Store *{0} = {1}".format(stmt.addr, stmt.data))
                 tmp_node = self.getNodeIdFromLabel(self.G, str(stmt.data))
                 pointer_node = self.getNodeIdFromLabel(self.G, str(stmt.addr))
-                #op = self.addNode("STLe")
-                #self.G.add_edge(pointer_node, op)
-                #self.G.add_edge(op, tmp_node)
+                op = self.addNode("STLe({})".format(str(stmt.addr)))
+                self.G.add_edge(pointer_node, op)
+                self.G.add_edge(op, tmp_node)
                 
             elif isinstance(stmt, pyvex.stmt.Put): # Put register
                 register_name = self.arch.register_names[stmt.offset].upper() + "_w" # _w = write

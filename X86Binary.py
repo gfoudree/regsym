@@ -38,4 +38,4 @@ class X86Binary():
         fn_info = self.getFunctionInfo(funcName)
         fn_machinecode = self.getBinaryChunkOfFunction(funcName)
         
-        return pyvex.lift(fn_machinecode, fn_info['offset'], self.arch, opt_level=2)
+        return pyvex.lift(fn_machinecode, fn_info['offset'], self.arch)
