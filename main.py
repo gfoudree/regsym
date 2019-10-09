@@ -10,7 +10,7 @@ from DFGGraph import *
 
 if __name__ == '__main__':
     b = X86Binary('./linear')
-    irsb = b.getVEXIROfFunction('triple_add_shift')
+    irsb = b.getVEXIROfFunction('add_mod')
     irsb.pp()
     G = DFGGraph(b.arch)
     

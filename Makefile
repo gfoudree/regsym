@@ -1,2 +1,2 @@
 all: test.c
-	gcc -fomit-frame-pointer -O0 test.c -o linear
+	gcc -funroll-all-loops -funroll-loops -fomit-frame-pointer -O0 test.c -o linear
