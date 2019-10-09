@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Fri Sep 20 12:50:40 2019
@@ -10,7 +10,7 @@ from DFGGraph import *
 
 if __name__ == '__main__':
     b = X86Binary('./linear')
-    irsb = b.getVEXIROfFunction('_baz')
+    irsb = b.getVEXIROfFunction('shift_mul_add')
     irsb.pp()
     G = DFGGraph(b.arch)
     

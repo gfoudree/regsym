@@ -26,6 +26,8 @@ class X86Binary():
         fn_info = self.getFunctionInfo(funcName)
         
         fn_machinecode = self.radarePipe.cmd('pcs ' + str(fn_info['size'])).strip()
+        if not isinstance(fn_machinecode, str):
+            fn_machinecode = fn_machinecode.decode()
         fn_machinecode = binascii.unhexlify(fn_machinecode.replace('\\', '').replace('x', '')[1:-1])
         
         return fn_machinecode
