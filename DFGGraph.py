@@ -44,6 +44,8 @@ class DFGGraph():
             for subgraph in G.nodes().items():
                 graphLabel = subgraph[1]['label']
                 graphPredecessors = len(list(G.predecessors(subgraph[0])))
+                graphSuccessors = len(list(G.successors(subgraph[0])))
+                
                 if graphLabel == nodeLabel and graphPredecessors == 0:
                         G.add_edge(V, subgraph[0])
                         self.DFS(G, subgraph[0])
@@ -53,10 +55,18 @@ class DFGGraph():
                     if predNodeLabel == graphLabel:
                         G.add_edge(V, subgraph[0])
                         self.DFS(G, subgraph[0])
-
+                
+                # Deal with register writes being root nodes by looking at the successor node as the "root"
+                elif graphSuccessors == 1 and ('_r' in graphLabel or '_w' in graphLabel):
+                    successor = list(G.successors(subgraph[0]))[0]
+                    successorLabel = G.nodes[successor]['label']
+                    if successorLabel == nodeLabel:
+                        G.add_edge(V, successor)
+                        self.DFS(G, successor)
+                
         for N in G.successors(V):
-            #if N not in visited:
-            self.DFS(G, N, visited)
+            if N not in visited:
+                self.DFS(G, N, visited)
         return visited
     
     def mergeNodes(self, G):
