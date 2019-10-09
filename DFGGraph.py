@@ -42,12 +42,21 @@ class DFGGraph():
         
         if len(list(G.successors(V))) == 0: #Leaf node? Find other graphs with this node as root
             for subgraph in G.nodes().items():
-                if subgraph[1]['label'] == nodeLabel and len(list(G.predecessors(subgraph[0]))) == 0:
+                graphLabel = subgraph[1]['label']
+                graphPredecessors = len(list(G.predecessors(subgraph[0])))
+                if graphLabel == nodeLabel and graphPredecessors == 0:
                         G.add_edge(V, subgraph[0])
                         self.DFS(G, subgraph[0])
+                elif graphLabel == nodeLabel and graphPredecessors == 1:
+                    predNode = list(G.predecessors(subgraph[0]))[0]
+                    predNodeLabel = G.nodes[predNode]['label']
+                    if predNodeLabel == graphLabel:
+                        G.add_edge(V, subgraph[0])
+                        self.DFS(G, subgraph[0])
+
         for N in G.successors(V):
-            if N not in visited:
-                self.DFS(G, N, visited)
+            #if N not in visited:
+            self.DFS(G, N, visited)
         return visited
     
     def mergeNodes(self, G):
@@ -212,13 +221,13 @@ class DFGGraph():
             if isinstance(stmt, pyvex.stmt.Put) and self.arch.register_names[stmt.offset] == 'rip':
                 continue
             #Print actual VEX IR line
-            print("[VEX Stmt] " + str(stmt))
+            #print("[VEX Stmt] " + str(stmt))
             
             if isinstance(stmt, pyvex.stmt.WrTmp): # temp variable assignment (ex: t0 = 5)
                 tmp_node = self.addNode("t" + str(stmt.tmp))
                 if isinstance(stmt.data, pyvex.stmt.Get): # Is the data coming from a register?
                     register_name = self.arch.register_names[stmt.data.offset].upper() + "_r" # _r = read
-                    print("t" + str(stmt.tmp) + " = \n" + register_name)
+                    #print("t" + str(stmt.tmp) + " = \n" + register_name)
                     reg_node = self.addNode(register_name)
                     self.G.add_edge(tmp_node, reg_node)
                 else:
@@ -229,12 +238,12 @@ class DFGGraph():
                     
                     for exp in stmt.expressions:
                         for chi in exp.child_expressions:
-                            print(chi)
+                            #print(chi)
                             childNode = self.addNode(str(chi))
                             self.G.add_edge(opNode, childNode)
 
             elif isinstance(stmt, pyvex.stmt.Store): # Can be a store to memory addr or temp var dereference
-                print("Store *{0} = {1}".format(stmt.addr, stmt.data))
+                #print("Store *{0} = {1}".format(stmt.addr, stmt.data))
                 tmp_node = self.getNodeIdFromLabel(self.G, str(stmt.data))
                 pointer_node = self.getNodeIdFromLabel(self.G, str(stmt.addr))
                 op = self.addNode("STLe({})".format(str(stmt.addr)))
@@ -243,7 +252,7 @@ class DFGGraph():
                 
             elif isinstance(stmt, pyvex.stmt.Put): # Put register
                 register_name = self.arch.register_names[stmt.offset].upper() + "_w" # _w = write
-                print(register_name + " = \n" + str(stmt.data))
+                #print(register_name + " = \n" + str(stmt.data))
                 regNode = self.addNode(register_name)
                 
                 if isinstance(stmt.data, pyvex.expr.Const):

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
 Created on Fri Sep 20 12:50:40 2019
@@ -20,4 +20,3 @@ if __name__ == '__main__':
     
     print("*"*30)
     print(G.generateDependencyGraph('RAX'))
-    
