@@ -1,0 +1,647 @@
+Processing _baz
+0x401106: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198666 64)) ; Program Counter
+0x40110a: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198670 64)) ; Program Counter
+0x40110e: add eax, 0x16
+	 (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!6) (_ bv22 32)))) ; ADD operation
+	 (define-fun ref!9 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!8) (bvxor ((_ extract 31 0) ref!6) (_ bv22 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!10 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!6) (_ bv22 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!6) (_ bv22 32)) ((_ extract 31 0) ref!8)) (bvxor ((_ extract 31 0) ref!6) (_ bv22 32)))))) ; Carry flag
+	 (define-fun ref!11 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!6) (bvnot (_ bv22 32))) (bvxor ((_ extract 31 0) ref!6) ((_ extract 31 0) ref!8))))) ; Overflow flag
+	 (define-fun ref!12 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!13 () (_ BitVec 1) ((_ extract 31 31) ref!8)) ; Sign flag
+	 (define-fun ref!14 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!8) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!15 () (_ BitVec 64) (_ bv4198673 64)) ; Program Counter
+0x401111: ret
+	 (define-fun ref!16 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!17 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!6) (_ bv22 32)))) ; ADD operation
+
+
+Processing _bar
+0x401112: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198678 64)) ; Program Counter
+0x401116: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198682 64)) ; Program Counter
+0x40111a: mov eax, dword ptr [rsp - 8]
+	 (define-fun ref!12 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!6 ref!7 ref!8 ref!9))) ; MOV operation
+	 (define-fun ref!13 () (_ BitVec 64) (_ bv4198686 64)) ; Program Counter
+0x40111e: sub eax, dword ptr [rsp - 4]
+	 (define-fun ref!14 () (_ BitVec 64) ((_ zero_extend 32) (bvsub ((_ extract 31 0) ref!12) (concat ref!0 ref!1 ref!2 ref!3)))) ; SUB operation
+	 (define-fun ref!15 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!14) (bvxor ((_ extract 31 0) ref!12) (concat ref!0 ref!1 ref!2 ref!3))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!16 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvxor ((_ extract 31 0) ref!12) (bvxor (concat ref!0 ref!1 ref!2 ref!3) ((_ extract 31 0) ref!14))) (bvand (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!14)) (bvxor ((_ extract 31 0) ref!12) (concat ref!0 ref!1 ref!2 ref!3)))))) ; Carry flag
+	 (define-fun ref!17 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!12) (concat ref!0 ref!1 ref!2 ref!3)) (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!14))))) ; Overflow flag
+	 (define-fun ref!18 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!19 () (_ BitVec 1) ((_ extract 31 31) ref!14)) ; Sign flag
+	 (define-fun ref!20 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!14) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198690 64)) ; Program Counter
+0x401122: ret
+	 (define-fun ref!22 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!23 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!14 () (_ BitVec 64) ((_ zero_extend 32) (bvsub ((_ extract 31 0) ref!12) (concat ref!0 ref!1 ref!2 ref!3)))) ; SUB operation
+
+
+Processing shift_add
+0x401123: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198695 64)) ; Program Counter
+0x401127: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198699 64)) ; Program Counter
+0x40112b: sar eax, 2
+	 (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!6) (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32))))) ; SAR operation
+	 (define-fun ref!9 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (ite (bvugt (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv32 32)) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (_ bv32 32) (_ bv1 32)))) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv1 32))))))) ; Carry flag
+	 (define-fun ref!10 () (_ BitVec 1) (ite (and (= ref!8 ref!8) (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv1 32))) (_ bv0 1) (_ bv0 1))) ; Overflow flag
+	 (define-fun ref!11 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!12 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) ((_ extract 31 31) ref!8))) ; Sign flag
+	 (define-fun ref!13 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (ite (= ((_ extract 31 0) ref!8) (_ bv0 32)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!14 () (_ BitVec 64) (_ bv4198702 64)) ; Program Counter
+0x40112e: add eax, 3
+	 (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!8) (_ bv3 32)))) ; ADD operation
+	 (define-fun ref!16 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!15) (bvxor ((_ extract 31 0) ref!8) (_ bv3 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!17 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!8) (_ bv3 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!8) (_ bv3 32)) ((_ extract 31 0) ref!15)) (bvxor ((_ extract 31 0) ref!8) (_ bv3 32)))))) ; Carry flag
+	 (define-fun ref!18 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!8) (bvnot (_ bv3 32))) (bvxor ((_ extract 31 0) ref!8) ((_ extract 31 0) ref!15))))) ; Overflow flag
+	 (define-fun ref!19 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!20 () (_ BitVec 1) ((_ extract 31 31) ref!15)) ; Sign flag
+	 (define-fun ref!21 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!15) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!22 () (_ BitVec 64) (_ bv4198705 64)) ; Program Counter
+0x401131: ret
+	 (define-fun ref!23 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!24 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!8) (_ bv3 32)))) ; ADD operation
+
+
+Processing unused_param_add
+0x401132: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198710 64)) ; Program Counter
+0x401136: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198714 64)) ; Program Counter
+0x40113a: mov dword ptr [rsp - 0xc], edx
+	 (define-fun ref!12 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!13 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!14 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!15 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!16 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!17 () (_ BitVec 64) (_ bv4198718 64)) ; Program Counter
+0x40113e: mov eax, dword ptr [rsp - 0xc]
+	 (define-fun ref!18 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!12 ref!13 ref!14 ref!15))) ; MOV operation
+	 (define-fun ref!19 () (_ BitVec 64) (_ bv4198722 64)) ; Program Counter
+0x401142: add eax, 0x19
+	 (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!18) (_ bv25 32)))) ; ADD operation
+	 (define-fun ref!21 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!20) (bvxor ((_ extract 31 0) ref!18) (_ bv25 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!22 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!18) (_ bv25 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!18) (_ bv25 32)) ((_ extract 31 0) ref!20)) (bvxor ((_ extract 31 0) ref!18) (_ bv25 32)))))) ; Carry flag
+	 (define-fun ref!23 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!18) (bvnot (_ bv25 32))) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20))))) ; Overflow flag
+	 (define-fun ref!24 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!25 () (_ BitVec 1) ((_ extract 31 31) ref!20)) ; Sign flag
+	 (define-fun ref!26 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!20) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!27 () (_ BitVec 64) (_ bv4198725 64)) ; Program Counter
+0x401145: ret
+	 (define-fun ref!28 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!29 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!18) (_ bv25 32)))) ; ADD operation
+
+
+Processing and_xor
+0x401146: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198730 64)) ; Program Counter
+0x40114a: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198734 64)) ; Program Counter
+0x40114e: and eax, 0xffffcccc
+	 (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) (bvand ((_ extract 31 0) ref!6) (_ bv4294954188 32)))) ; AND operation
+	 (define-fun ref!9 () (_ BitVec 1) (_ bv0 1)) ; Clears carry flag
+	 (define-fun ref!10 () (_ BitVec 1) (_ bv0 1)) ; Clears overflow flag
+	 (define-fun ref!11 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!12 () (_ BitVec 1) ((_ extract 31 31) ref!8)) ; Sign flag
+	 (define-fun ref!13 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!8) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!14 () (_ BitVec 64) (_ bv4198739 64)) ; Program Counter
+0x401153: xor eax, 0xddaaccbb
+	 (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvxor ((_ extract 31 0) ref!8) (_ bv3718958267 32)))) ; XOR operation
+	 (define-fun ref!16 () (_ BitVec 1) (_ bv0 1)) ; Clears carry flag
+	 (define-fun ref!17 () (_ BitVec 1) (_ bv0 1)) ; Clears overflow flag
+	 (define-fun ref!18 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!19 () (_ BitVec 1) ((_ extract 31 31) ref!15)) ; Sign flag
+	 (define-fun ref!20 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!15) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198744 64)) ; Program Counter
+0x401158: ret
+	 (define-fun ref!22 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!23 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvxor ((_ extract 31 0) ref!8) (_ bv3718958267 32)))) ; XOR operation
+
+
+Processing div_add
+0x401159: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198749 64)) ; Program Counter
+0x40115d: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198753 64)) ; Program Counter
+0x401161: movsxd rdx, eax
+	 (define-fun ref!8 () (_ BitVec 64) ((_ sign_extend 32) ((_ extract 31 0) ref!6))) ; MOVSXD operation
+	 (define-fun ref!9 () (_ BitVec 64) (_ bv4198756 64)) ; Program Counter
+0x401164: imul rdx, rdx, 0x55555556
+	 (define-fun ref!10 () (_ BitVec 64) ((_ extract 63 0) (bvmul ((_ sign_extend 64) ref!8) ((_ sign_extend 64) (_ bv1431655766 64))))) ; IMUL operation
+	 (define-fun ref!11 () (_ BitVec 1) (ite (= ((_ sign_extend 64) (bvmul ref!8 (_ bv1431655766 64))) (bvmul ((_ sign_extend 64) ref!8) ((_ sign_extend 64) (_ bv1431655766 64)))) (_ bv0 1) (_ bv1 1))) ; Carry flag
+	 (define-fun ref!12 () (_ BitVec 1) (ite (= ((_ sign_extend 64) (bvmul ref!8 (_ bv1431655766 64))) (bvmul ((_ sign_extend 64) ref!8) ((_ sign_extend 64) (_ bv1431655766 64)))) (_ bv0 1) (_ bv1 1))) ; Overflow flag
+	 (define-fun ref!13 () (_ BitVec 64) (_ bv4198763 64)) ; Program Counter
+0x40116b: shr rdx, 0x20
+	 (define-fun ref!14 () (_ BitVec 64) (bvlshr ref!10 (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)))) ; SHR operation
+	 (define-fun ref!15 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv0 64)) ref!11 ((_ extract 0 0) (bvlshr ref!10 (bvsub (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv1 64)))))) ; Carry flag
+	 (define-fun ref!16 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv1 64)) ((_ extract 0 0) (bvlshr ref!10 (bvsub (_ bv64 64) (_ bv1 64)))) ref!12)) ; Overflow flag
+	 (define-fun ref!17 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv0 64)) (_ bv0 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!18 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv0 64)) (_ bv0 1) ((_ extract 63 63) ref!14))) ; Sign flag
+	 (define-fun ref!19 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 56) (_ bv32 8)) (_ bv63 64)) (_ bv0 64)) (_ bv0 1) (ite (= ref!14 (_ bv0 64)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!20 () (_ BitVec 64) (_ bv4198767 64)) ; Program Counter
+0x40116f: sar eax, 0x1f
+	 (define-fun ref!21 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!6) (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32))))) ; SAR operation
+	 (define-fun ref!22 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv0 32)) ref!15 (ite (bvugt (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv32 32)) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (_ bv32 32) (_ bv1 32)))) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv1 32))))))) ; Carry flag
+	 (define-fun ref!23 () (_ BitVec 1) (ite (and (= ref!21 ref!21) (= (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv1 32))) (_ bv0 1) ref!16)) ; Overflow flag
+	 (define-fun ref!24 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv0 32)) ref!17 (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!21) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!25 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv0 32)) ref!18 ((_ extract 31 31) ref!21))) ; Sign flag
+	 (define-fun ref!26 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv31 8)) (_ bv31 32)) (_ bv0 32)) ref!19 (ite (= ((_ extract 31 0) ref!21) (_ bv0 32)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!27 () (_ BitVec 64) (_ bv4198770 64)) ; Program Counter
+0x401172: mov ecx, edx
+	 (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!14))) ; MOV operation
+	 (define-fun ref!29 () (_ BitVec 64) (_ bv4198772 64)) ; Program Counter
+0x401174: sub ecx, eax
+	 (define-fun ref!30 () (_ BitVec 64) ((_ zero_extend 32) (bvsub ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!21)))) ; SUB operation
+	 (define-fun ref!31 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!30) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!21))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!32 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvxor ((_ extract 31 0) ref!28) (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!30))) (bvand (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!30)) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!21)))))) ; Carry flag
+	 (define-fun ref!33 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!21)) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!30))))) ; Overflow flag
+	 (define-fun ref!34 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!30) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!35 () (_ BitVec 1) ((_ extract 31 31) ref!30)) ; Sign flag
+	 (define-fun ref!36 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!30) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!37 () (_ BitVec 64) (_ bv4198774 64)) ; Program Counter
+0x401176: mov eax, ecx
+	 (define-fun ref!38 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!30))) ; MOV operation
+	 (define-fun ref!39 () (_ BitVec 64) (_ bv4198776 64)) ; Program Counter
+0x401178: add eax, 0x2c
+	 (define-fun ref!40 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!38) (_ bv44 32)))) ; ADD operation
+	 (define-fun ref!41 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!40) (bvxor ((_ extract 31 0) ref!38) (_ bv44 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!42 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!38) (_ bv44 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!38) (_ bv44 32)) ((_ extract 31 0) ref!40)) (bvxor ((_ extract 31 0) ref!38) (_ bv44 32)))))) ; Carry flag
+	 (define-fun ref!43 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!38) (bvnot (_ bv44 32))) (bvxor ((_ extract 31 0) ref!38) ((_ extract 31 0) ref!40))))) ; Overflow flag
+	 (define-fun ref!44 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!45 () (_ BitVec 1) ((_ extract 31 31) ref!40)) ; Sign flag
+	 (define-fun ref!46 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!40) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!47 () (_ BitVec 64) (_ bv4198779 64)) ; Program Counter
+0x40117b: ret
+	 (define-fun ref!48 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!49 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!40 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!38) (_ bv44 32)))) ; ADD operation
+
+
+Processing mul_xor
+0x40117c: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198784 64)) ; Program Counter
+0x401180: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198788 64)) ; Program Counter
+0x401184: mov dword ptr [rsp - 0xc], edx
+	 (define-fun ref!12 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!13 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!14 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!15 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!16 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!17 () (_ BitVec 64) (_ bv4198792 64)) ; Program Counter
+0x401188: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!18 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!19 () (_ BitVec 64) (_ bv4198796 64)) ; Program Counter
+0x40118c: imul eax, dword ptr [rsp - 8]
+	 (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) (bvmul ((_ sign_extend 32) ((_ extract 31 0) ref!18)) ((_ sign_extend 32) (concat ref!6 ref!7 ref!8 ref!9)))))) ; IMUL operation
+	 (define-fun ref!21 () (_ BitVec 1) (ite (= ((_ sign_extend 32) (bvmul ((_ extract 31 0) ref!18) (concat ref!6 ref!7 ref!8 ref!9))) (bvmul ((_ sign_extend 32) ((_ extract 31 0) ref!18)) ((_ sign_extend 32) (concat ref!6 ref!7 ref!8 ref!9)))) (_ bv0 1) (_ bv1 1))) ; Carry flag
+	 (define-fun ref!22 () (_ BitVec 1) (ite (= ((_ sign_extend 32) (bvmul ((_ extract 31 0) ref!18) (concat ref!6 ref!7 ref!8 ref!9))) (bvmul ((_ sign_extend 32) ((_ extract 31 0) ref!18)) ((_ sign_extend 32) (concat ref!6 ref!7 ref!8 ref!9)))) (_ bv0 1) (_ bv1 1))) ; Overflow flag
+	 (define-fun ref!23 () (_ BitVec 64) (_ bv4198801 64)) ; Program Counter
+0x401191: xor eax, dword ptr [rsp - 0xc]
+	 (define-fun ref!24 () (_ BitVec 64) ((_ zero_extend 32) (bvxor ((_ extract 31 0) ref!20) (concat ref!12 ref!13 ref!14 ref!15)))) ; XOR operation
+	 (define-fun ref!25 () (_ BitVec 1) (_ bv0 1)) ; Clears carry flag
+	 (define-fun ref!26 () (_ BitVec 1) (_ bv0 1)) ; Clears overflow flag
+	 (define-fun ref!27 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!24) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!28 () (_ BitVec 1) ((_ extract 31 31) ref!24)) ; Sign flag
+	 (define-fun ref!29 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!24) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!30 () (_ BitVec 64) (_ bv4198805 64)) ; Program Counter
+0x401195: ret
+	 (define-fun ref!31 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!32 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!24 () (_ BitVec 64) ((_ zero_extend 32) (bvxor ((_ extract 31 0) ref!20) (concat ref!12 ref!13 ref!14 ref!15)))) ; XOR operation
+
+
+Processing shift_mul_add
+0x401196: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198810 64)) ; Program Counter
+0x40119a: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198814 64)) ; Program Counter
+0x40119e: lea edx, [rax*4]
+	 (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) (bvadd (_ bv0 64) (bvadd (_ bv0 64) (bvmul ref!6 (_ bv4 64))))))) ; LEA operation
+	 (define-fun ref!9 () (_ BitVec 64) (_ bv4198821 64)) ; Program Counter
+0x4011a5: mov eax, edx
+	 (define-fun ref!10 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!8))) ; MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198823 64)) ; Program Counter
+0x4011a7: add eax, eax
+	 (define-fun ref!12 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!10)))) ; ADD operation
+	 (define-fun ref!13 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!12) (bvxor ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!10))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!14 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!10)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!10)) ((_ extract 31 0) ref!12)) (bvxor ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!10)))))) ; Carry flag
+	 (define-fun ref!15 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!10) (bvnot ((_ extract 31 0) ref!10))) (bvxor ((_ extract 31 0) ref!10) ((_ extract 31 0) ref!12))))) ; Overflow flag
+	 (define-fun ref!16 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!12) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!17 () (_ BitVec 1) ((_ extract 31 31) ref!12)) ; Sign flag
+	 (define-fun ref!18 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!12) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!19 () (_ BitVec 64) (_ bv4198825 64)) ; Program Counter
+0x4011a9: add eax, edx
+	 (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!8)))) ; ADD operation
+	 (define-fun ref!21 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!20) (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!8))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!22 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!8)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!8)) ((_ extract 31 0) ref!20)) (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!8)))))) ; Carry flag
+	 (define-fun ref!23 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!12) (bvnot ((_ extract 31 0) ref!8))) (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!20))))) ; Overflow flag
+	 (define-fun ref!24 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!20) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!25 () (_ BitVec 1) ((_ extract 31 31) ref!20)) ; Sign flag
+	 (define-fun ref!26 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!20) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!27 () (_ BitVec 64) (_ bv4198827 64)) ; Program Counter
+0x4011ab: add eax, 4
+	 (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!20) (_ bv4 32)))) ; ADD operation
+	 (define-fun ref!29 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!28) (bvxor ((_ extract 31 0) ref!20) (_ bv4 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!30 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!20) (_ bv4 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!20) (_ bv4 32)) ((_ extract 31 0) ref!28)) (bvxor ((_ extract 31 0) ref!20) (_ bv4 32)))))) ; Carry flag
+	 (define-fun ref!31 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!20) (bvnot (_ bv4 32))) (bvxor ((_ extract 31 0) ref!20) ((_ extract 31 0) ref!28))))) ; Overflow flag
+	 (define-fun ref!32 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!33 () (_ BitVec 1) ((_ extract 31 31) ref!28)) ; Sign flag
+	 (define-fun ref!34 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!28) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!35 () (_ BitVec 64) (_ bv4198830 64)) ; Program Counter
+0x4011ae: ret
+	 (define-fun ref!36 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!37 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!20) (_ bv4 32)))) ; ADD operation
+
+
+Processing or_shift
+0x4011af: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198835 64)) ; Program Counter
+0x4011b3: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!6 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!7 () (_ BitVec 64) (_ bv4198839 64)) ; Program Counter
+0x4011b7: sar eax, 3
+	 (define-fun ref!8 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!6) (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32))))) ; SAR operation
+	 (define-fun ref!9 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (ite (bvugt (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv32 32)) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (_ bv32 32) (_ bv1 32)))) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!6) (bvsub (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv1 32))))))) ; Carry flag
+	 (define-fun ref!10 () (_ BitVec 1) (ite (and (= ref!8 ref!8) (= (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv1 32))) (_ bv0 1) (_ bv0 1))) ; Overflow flag
+	 (define-fun ref!11 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!8) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!12 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) ((_ extract 31 31) ref!8))) ; Sign flag
+	 (define-fun ref!13 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv3 8)) (_ bv31 32)) (_ bv0 32)) (_ bv0 1) (ite (= ((_ extract 31 0) ref!8) (_ bv0 32)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!14 () (_ BitVec 64) (_ bv4198842 64)) ; Program Counter
+0x4011ba: or eax, 0x1f
+	 (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvor ((_ extract 31 0) ref!8) (_ bv31 32)))) ; OR operation
+	 (define-fun ref!16 () (_ BitVec 1) (_ bv0 1)) ; Clears carry flag
+	 (define-fun ref!17 () (_ BitVec 1) (_ bv0 1)) ; Clears overflow flag
+	 (define-fun ref!18 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!15) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!19 () (_ BitVec 1) ((_ extract 31 31) ref!15)) ; Sign flag
+	 (define-fun ref!20 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!15) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198845 64)) ; Program Counter
+0x4011bd: ret
+	 (define-fun ref!22 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!23 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!15 () (_ BitVec 64) ((_ zero_extend 32) (bvor ((_ extract 31 0) ref!8) (_ bv31 32)))) ; OR operation
+
+
+Processing triple_add
+0x4011be: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198850 64)) ; Program Counter
+0x4011c2: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198854 64)) ; Program Counter
+0x4011c6: mov dword ptr [rsp - 0xc], edx
+	 (define-fun ref!12 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!13 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!14 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!15 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!16 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!17 () (_ BitVec 64) (_ bv4198858 64)) ; Program Counter
+0x4011ca: mov edx, dword ptr [rsp - 4]
+	 (define-fun ref!18 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!19 () (_ BitVec 64) (_ bv4198862 64)) ; Program Counter
+0x4011ce: mov eax, dword ptr [rsp - 8]
+	 (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!6 ref!7 ref!8 ref!9))) ; MOV operation
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198866 64)) ; Program Counter
+0x4011d2: add edx, eax
+	 (define-fun ref!22 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)))) ; ADD operation
+	 (define-fun ref!23 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!22) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!24 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)) ((_ extract 31 0) ref!22)) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)))))) ; Carry flag
+	 (define-fun ref!25 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!18) (bvnot ((_ extract 31 0) ref!20))) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!22))))) ; Overflow flag
+	 (define-fun ref!26 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!27 () (_ BitVec 1) ((_ extract 31 31) ref!22)) ; Sign flag
+	 (define-fun ref!28 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!22) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!29 () (_ BitVec 64) (_ bv4198868 64)) ; Program Counter
+0x4011d4: mov eax, dword ptr [rsp - 0xc]
+	 (define-fun ref!30 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!12 ref!13 ref!14 ref!15))) ; MOV operation
+	 (define-fun ref!31 () (_ BitVec 64) (_ bv4198872 64)) ; Program Counter
+0x4011d8: add eax, edx
+	 (define-fun ref!32 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)))) ; ADD operation
+	 (define-fun ref!33 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!32) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!34 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)) ((_ extract 31 0) ref!32)) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)))))) ; Carry flag
+	 (define-fun ref!35 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!30) (bvnot ((_ extract 31 0) ref!22))) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!32))))) ; Overflow flag
+	 (define-fun ref!36 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!37 () (_ BitVec 1) ((_ extract 31 31) ref!32)) ; Sign flag
+	 (define-fun ref!38 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!32) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!39 () (_ BitVec 64) (_ bv4198874 64)) ; Program Counter
+0x4011da: ret
+	 (define-fun ref!40 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!41 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!32 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)))) ; ADD operation
+
+
+Processing triple_add_shift
+0x4011db: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198879 64)) ; Program Counter
+0x4011df: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198883 64)) ; Program Counter
+0x4011e3: mov dword ptr [rsp - 0xc], edx
+	 (define-fun ref!12 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!13 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!14 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!15 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!16 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!17 () (_ BitVec 64) (_ bv4198887 64)) ; Program Counter
+0x4011e7: mov edx, dword ptr [rsp - 4]
+	 (define-fun ref!18 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!19 () (_ BitVec 64) (_ bv4198891 64)) ; Program Counter
+0x4011eb: mov eax, dword ptr [rsp - 8]
+	 (define-fun ref!20 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!6 ref!7 ref!8 ref!9))) ; MOV operation
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198895 64)) ; Program Counter
+0x4011ef: add edx, eax
+	 (define-fun ref!22 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)))) ; ADD operation
+	 (define-fun ref!23 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!22) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!24 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)) ((_ extract 31 0) ref!22)) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!20)))))) ; Carry flag
+	 (define-fun ref!25 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!18) (bvnot ((_ extract 31 0) ref!20))) (bvxor ((_ extract 31 0) ref!18) ((_ extract 31 0) ref!22))))) ; Overflow flag
+	 (define-fun ref!26 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!22) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!27 () (_ BitVec 1) ((_ extract 31 31) ref!22)) ; Sign flag
+	 (define-fun ref!28 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!22) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!29 () (_ BitVec 64) (_ bv4198897 64)) ; Program Counter
+0x4011f1: mov eax, dword ptr [rsp - 0xc]
+	 (define-fun ref!30 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!12 ref!13 ref!14 ref!15))) ; MOV operation
+	 (define-fun ref!31 () (_ BitVec 64) (_ bv4198901 64)) ; Program Counter
+0x4011f5: add eax, edx
+	 (define-fun ref!32 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)))) ; ADD operation
+	 (define-fun ref!33 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!32) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!34 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)) ((_ extract 31 0) ref!32)) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!22)))))) ; Carry flag
+	 (define-fun ref!35 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!30) (bvnot ((_ extract 31 0) ref!22))) (bvxor ((_ extract 31 0) ref!30) ((_ extract 31 0) ref!32))))) ; Overflow flag
+	 (define-fun ref!36 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!32) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!37 () (_ BitVec 1) ((_ extract 31 31) ref!32)) ; Sign flag
+	 (define-fun ref!38 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!32) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!39 () (_ BitVec 64) (_ bv4198903 64)) ; Program Counter
+0x4011f7: sar eax, 2
+	 (define-fun ref!40 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!32) (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32))))) ; SAR operation
+	 (define-fun ref!41 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) ref!34 (ite (bvugt (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv32 32)) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!32) (bvsub (_ bv32 32) (_ bv1 32)))) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!32) (bvsub (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv1 32))))))) ; Carry flag
+	 (define-fun ref!42 () (_ BitVec 1) (ite (and (= ref!40 ref!40) (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv1 32))) (_ bv0 1) ref!35)) ; Overflow flag
+	 (define-fun ref!43 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) ref!36 (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!40) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!44 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) ref!37 ((_ extract 31 31) ref!40))) ; Sign flag
+	 (define-fun ref!45 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32)) (_ bv0 32)) ref!38 (ite (= ((_ extract 31 0) ref!40) (_ bv0 32)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!46 () (_ BitVec 64) (_ bv4198906 64)) ; Program Counter
+0x4011fa: ret
+	 (define-fun ref!47 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!48 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!40 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!32) (bvand ((_ zero_extend 24) (_ bv2 8)) (_ bv31 32))))) ; SAR operation
+
+
+Processing triple_add_shift_param
+0x4011fb: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198911 64)) ; Program Counter
+0x4011ff: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198915 64)) ; Program Counter
+0x401203: mov dword ptr [rsp - 0xc], edx
+	 (define-fun ref!12 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!13 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!14 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!15 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!16 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!17 () (_ BitVec 64) (_ bv4198919 64)) ; Program Counter
+0x401207: mov dword ptr [rsp - 0x10], ecx
+	 (define-fun ref!18 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!19 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!20 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!21 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!22 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!23 () (_ BitVec 64) (_ bv4198923 64)) ; Program Counter
+0x40120b: mov edx, dword ptr [rsp - 4]
+	 (define-fun ref!24 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!25 () (_ BitVec 64) (_ bv4198927 64)) ; Program Counter
+0x40120f: mov eax, dword ptr [rsp - 8]
+	 (define-fun ref!26 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!6 ref!7 ref!8 ref!9))) ; MOV operation
+	 (define-fun ref!27 () (_ BitVec 64) (_ bv4198931 64)) ; Program Counter
+0x401213: add edx, eax
+	 (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!26)))) ; ADD operation
+	 (define-fun ref!29 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!28) (bvxor ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!26))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!30 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!26)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!26)) ((_ extract 31 0) ref!28)) (bvxor ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!26)))))) ; Carry flag
+	 (define-fun ref!31 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!24) (bvnot ((_ extract 31 0) ref!26))) (bvxor ((_ extract 31 0) ref!24) ((_ extract 31 0) ref!28))))) ; Overflow flag
+	 (define-fun ref!32 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!28) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!33 () (_ BitVec 1) ((_ extract 31 31) ref!28)) ; Sign flag
+	 (define-fun ref!34 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!28) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!35 () (_ BitVec 64) (_ bv4198933 64)) ; Program Counter
+0x401215: mov eax, dword ptr [rsp - 0xc]
+	 (define-fun ref!36 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!12 ref!13 ref!14 ref!15))) ; MOV operation
+	 (define-fun ref!37 () (_ BitVec 64) (_ bv4198937 64)) ; Program Counter
+0x401219: add edx, eax
+	 (define-fun ref!38 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!36)))) ; ADD operation
+	 (define-fun ref!39 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!38) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!36))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!40 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!36)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!36)) ((_ extract 31 0) ref!38)) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!36)))))) ; Carry flag
+	 (define-fun ref!41 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!28) (bvnot ((_ extract 31 0) ref!36))) (bvxor ((_ extract 31 0) ref!28) ((_ extract 31 0) ref!38))))) ; Overflow flag
+	 (define-fun ref!42 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!38) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!43 () (_ BitVec 1) ((_ extract 31 31) ref!38)) ; Sign flag
+	 (define-fun ref!44 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!38) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!45 () (_ BitVec 64) (_ bv4198939 64)) ; Program Counter
+0x40121b: mov eax, dword ptr [rsp - 0x10]
+	 (define-fun ref!46 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!18 ref!19 ref!20 ref!21))) ; MOV operation
+	 (define-fun ref!47 () (_ BitVec 64) (_ bv4198943 64)) ; Program Counter
+0x40121f: mov ecx, eax
+	 (define-fun ref!48 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!46))) ; MOV operation
+	 (define-fun ref!49 () (_ BitVec 64) (_ bv4198945 64)) ; Program Counter
+0x401221: sar edx, cl
+	 (define-fun ref!50 () (_ BitVec 64) ((_ zero_extend 32) (bvashr ((_ extract 31 0) ref!38) (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32))))) ; SAR operation
+	 (define-fun ref!51 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv0 32)) ref!40 (ite (bvugt (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv32 32)) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!38) (bvsub (_ bv32 32) (_ bv1 32)))) ((_ extract 0 0) (bvlshr ((_ extract 31 0) ref!38) (bvsub (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv1 32))))))) ; Carry flag
+	 (define-fun ref!52 () (_ BitVec 1) (ite (and (= ref!50 ref!50) (= (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv1 32))) (_ bv0 1) ref!41)) ; Overflow flag
+	 (define-fun ref!53 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv0 32)) ref!42 (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!50) (_ bv7 8)))))) ; Parity flag
+	 (define-fun ref!54 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv0 32)) ref!43 ((_ extract 31 31) ref!50))) ; Sign flag
+	 (define-fun ref!55 () (_ BitVec 1) (ite (= (bvand ((_ zero_extend 24) ((_ extract 7 0) ref!48)) (_ bv31 32)) (_ bv0 32)) ref!44 (ite (= ((_ extract 31 0) ref!50) (_ bv0 32)) (_ bv1 1) (_ bv0 1)))) ; Zero flag
+	 (define-fun ref!56 () (_ BitVec 64) (_ bv4198947 64)) ; Program Counter
+0x401223: mov eax, edx
+	 (define-fun ref!57 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!50))) ; MOV operation
+	 (define-fun ref!58 () (_ BitVec 64) (_ bv4198949 64)) ; Program Counter
+0x401225: ret
+	 (define-fun ref!59 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!60 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!57 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!50))) ; MOV operation
+
+
+Processing add_mod
+0x401226: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198954 64)) ; Program Counter
+0x40122a: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198958 64)) ; Program Counter
+0x40122e: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!12 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!13 () (_ BitVec 64) (_ bv4198962 64)) ; Program Counter
+0x401232: add eax, 0x4d
+	 (define-fun ref!14 () (_ BitVec 64) ((_ zero_extend 32) (bvadd ((_ extract 31 0) ref!12) (_ bv77 32)))) ; ADD operation
+	 (define-fun ref!15 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!14) (bvxor ((_ extract 31 0) ref!12) (_ bv77 32))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!16 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvand ((_ extract 31 0) ref!12) (_ bv77 32)) (bvand (bvxor (bvxor ((_ extract 31 0) ref!12) (_ bv77 32)) ((_ extract 31 0) ref!14)) (bvxor ((_ extract 31 0) ref!12) (_ bv77 32)))))) ; Carry flag
+	 (define-fun ref!17 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!12) (bvnot (_ bv77 32))) (bvxor ((_ extract 31 0) ref!12) ((_ extract 31 0) ref!14))))) ; Overflow flag
+	 (define-fun ref!18 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!19 () (_ BitVec 1) ((_ extract 31 31) ref!14)) ; Sign flag
+	 (define-fun ref!20 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!14) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!21 () (_ BitVec 64) (_ bv4198965 64)) ; Program Counter
+0x401235: cdq
+	 (define-fun ref!22 () (_ BitVec 64) ((_ sign_extend 32) ((_ extract 31 0) ref!14))) ; Temporary variable
+	 (define-fun ref!23 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 63 32) ref!22))) ; CDQ operation
+	 (define-fun ref!24 () (_ BitVec 64) (_ bv4198966 64)) ; Program Counter
+0x401236: idiv dword ptr [rsp - 8]
+	 (define-fun ref!25 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) (bvsdiv (concat ((_ extract 31 0) ref!23) ((_ extract 31 0) ref!14)) ((_ sign_extend 32) (concat ref!6 ref!7 ref!8 ref!9)))))) ; IDIV operation
+	 (define-fun ref!26 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) (bvsrem (concat ((_ extract 31 0) ref!23) ((_ extract 31 0) ref!14)) ((_ sign_extend 32) (concat ref!6 ref!7 ref!8 ref!9)))))) ; IDIV operation
+	 (define-fun ref!27 () (_ BitVec 64) (_ bv4198970 64)) ; Program Counter
+0x40123a: mov eax, edx
+	 (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!26))) ; MOV operation
+	 (define-fun ref!29 () (_ BitVec 64) (_ bv4198972 64)) ; Program Counter
+0x40123c: ret
+	 (define-fun ref!30 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!31 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!28 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!26))) ; MOV operation
+
+
+Processing or_sub
+0x40123d: mov dword ptr [rsp - 4], edi
+	 (define-fun ref!0 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!1 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!2 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!3 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!4 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!5 () (_ BitVec 64) (_ bv4198977 64)) ; Program Counter
+0x401241: mov dword ptr [rsp - 8], esi
+	 (define-fun ref!6 () (_ BitVec 8) ((_ extract 31 24) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!7 () (_ BitVec 8) ((_ extract 23 16) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!8 () (_ BitVec 8) ((_ extract 15 8) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!9 () (_ BitVec 8) ((_ extract 7 0) (_ bv0 32))) ; Byte reference - MOV operation
+	 (define-fun ref!10 () (_ BitVec 32) (concat ((_ extract 31 24) (_ bv0 32)) ((_ extract 23 16) (_ bv0 32)) ((_ extract 15 8) (_ bv0 32)) ((_ extract 7 0) (_ bv0 32)))) ; Temporary concatenation reference - MOV operation
+	 (define-fun ref!11 () (_ BitVec 64) (_ bv4198981 64)) ; Program Counter
+0x401245: mov eax, dword ptr [rsp - 4]
+	 (define-fun ref!12 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!0 ref!1 ref!2 ref!3))) ; MOV operation
+	 (define-fun ref!13 () (_ BitVec 64) (_ bv4198985 64)) ; Program Counter
+0x401249: or eax, 0xfeeeeddd
+	 (define-fun ref!14 () (_ BitVec 64) ((_ zero_extend 32) (bvor ((_ extract 31 0) ref!12) (_ bv4277071325 32)))) ; OR operation
+	 (define-fun ref!15 () (_ BitVec 1) (_ bv0 1)) ; Clears carry flag
+	 (define-fun ref!16 () (_ BitVec 1) (_ bv0 1)) ; Clears overflow flag
+	 (define-fun ref!17 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!14) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!18 () (_ BitVec 1) ((_ extract 31 31) ref!14)) ; Sign flag
+	 (define-fun ref!19 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!14) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!20 () (_ BitVec 64) (_ bv4198990 64)) ; Program Counter
+0x40124e: mov edx, eax
+	 (define-fun ref!21 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!14))) ; MOV operation
+	 (define-fun ref!22 () (_ BitVec 64) (_ bv4198992 64)) ; Program Counter
+0x401250: mov eax, dword ptr [rsp - 8]
+	 (define-fun ref!23 () (_ BitVec 64) ((_ zero_extend 32) (concat ref!6 ref!7 ref!8 ref!9))) ; MOV operation
+	 (define-fun ref!24 () (_ BitVec 64) (_ bv4198996 64)) ; Program Counter
+0x401254: sub edx, eax
+	 (define-fun ref!25 () (_ BitVec 64) ((_ zero_extend 32) (bvsub ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!23)))) ; SUB operation
+	 (define-fun ref!26 () (_ BitVec 1) (ite (= (_ bv16 32) (bvand (_ bv16 32) (bvxor ((_ extract 31 0) ref!25) (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!23))))) (_ bv1 1) (_ bv0 1))) ; Adjust flag
+	 (define-fun ref!27 () (_ BitVec 1) ((_ extract 31 31) (bvxor (bvxor ((_ extract 31 0) ref!21) (bvxor ((_ extract 31 0) ref!23) ((_ extract 31 0) ref!25))) (bvand (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!25)) (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!23)))))) ; Carry flag
+	 (define-fun ref!28 () (_ BitVec 1) ((_ extract 31 31) (bvand (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!23)) (bvxor ((_ extract 31 0) ref!21) ((_ extract 31 0) ref!25))))) ; Overflow flag
+	 (define-fun ref!29 () (_ BitVec 1) (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (bvxor (_ bv1 1) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv0 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv1 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv2 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv3 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv4 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv5 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv6 8)))) ((_ extract 0 0) (bvlshr ((_ extract 7 0) ref!25) (_ bv7 8))))) ; Parity flag
+	 (define-fun ref!30 () (_ BitVec 1) ((_ extract 31 31) ref!25)) ; Sign flag
+	 (define-fun ref!31 () (_ BitVec 1) (ite (= ((_ extract 31 0) ref!25) (_ bv0 32)) (_ bv1 1) (_ bv0 1))) ; Zero flag
+	 (define-fun ref!32 () (_ BitVec 64) (_ bv4198998 64)) ; Program Counter
+0x401256: mov eax, edx
+	 (define-fun ref!33 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!25))) ; MOV operation
+	 (define-fun ref!34 () (_ BitVec 64) (_ bv4199000 64)) ; Program Counter
+0x401258: ret
+	 (define-fun ref!35 () (_ BitVec 64) (concat (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8) (_ bv0 8))) ; Program Counter
+	 (define-fun ref!36 () (_ BitVec 64) (bvadd (_ bv0 64) (_ bv8 64))) ; Stack alignment
+rax:64 bv[63..0] (define-fun ref!33 () (_ BitVec 64) ((_ zero_extend 32) ((_ extract 31 0) ref!25))) ; MOV operation
