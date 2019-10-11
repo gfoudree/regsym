@@ -1,8 +1,8 @@
-int _baz(int c) {
+int add_const(int c) {
 	return c + 22;
 }
 
-int _bar(int a, int b) {
+int ab_subtraction(int a, int b) {
 	return b - a;
 }
 
@@ -55,5 +55,5 @@ int or_sub(int a, int sub) {
 }
 
 int main() {
-	return _baz(4) + _bar(3, 4);
+	return 5;
 }

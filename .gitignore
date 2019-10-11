@@ -1,6 +1,8 @@
 # Byte-compiled / optimized / DLL files
 *.png
 .vscode
+.~lock*
+funcs.csv
 linear
 a.out
 __pycache__/
